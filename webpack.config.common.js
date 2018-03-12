@@ -10,13 +10,6 @@ const config = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins: [
-    new CleanWebpackPlugin('[dist]'),
-    new HtmlWebpackPlugin({
-      title: 'Dive into Sass',
-      template: './src/index.html'
-    })
-  ],
   module: {
     rules: [
       {
@@ -27,7 +20,7 @@ const config = {
         ]
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           'style-loader',
           'css-loader',
@@ -35,7 +28,14 @@ const config = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin('[dist]'),
+    new HtmlWebpackPlugin({
+      title: 'Dive into Sass',
+      template: './src/index.html'
+    })
+  ]
 }
 
 module.exports = config
